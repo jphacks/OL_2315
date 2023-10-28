@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package sns;
 
-option go_package = "/sns";
+option go_package = "/grpc_sns";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
@@ -34,7 +34,7 @@ message ID {
   string id = 1;
 }
 
-service SocialMediaService {
+service SNSService {
   rpc CreatePost(Post) returns (Post);
   rpc GetPostById(ID) returns (Post);
   rpc UpdatePost(Post) returns (Post);

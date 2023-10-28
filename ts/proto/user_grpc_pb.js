@@ -51,9 +51,9 @@ function deserialize_user_User(buffer_arg) {
 }
 
 
-var SocialMediaServiceService = exports.SocialMediaServiceService = {
+var UserServiceService = exports.UserServiceService = {
   createUser: {
-    path: '/user.SocialMediaService/CreateUser',
+    path: '/user.UserService/CreateUser',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.User,
@@ -64,7 +64,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_user_User,
   },
   getUserById: {
-    path: '/user.SocialMediaService/GetUserById',
+    path: '/user.UserService/GetUserById',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.ID,
@@ -75,7 +75,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_user_User,
   },
   updateUser: {
-    path: '/user.SocialMediaService/UpdateUser',
+    path: '/user.UserService/UpdateUser',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.User,
@@ -86,7 +86,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_user_User,
   },
   deleteUser: {
-    path: '/user.SocialMediaService/DeleteUser',
+    path: '/user.UserService/DeleteUser',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.ID,
@@ -97,7 +97,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   createFollow: {
-    path: '/user.SocialMediaService/CreateFollow',
+    path: '/user.UserService/CreateFollow',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.Follow,
@@ -108,7 +108,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_user_Follow,
   },
   getFollowById: {
-    path: '/user.SocialMediaService/GetFollowById',
+    path: '/user.UserService/GetFollowById',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.ID,
@@ -119,7 +119,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_user_Follow,
   },
   updateFollow: {
-    path: '/user.SocialMediaService/UpdateFollow',
+    path: '/user.UserService/UpdateFollow',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.Follow,
@@ -130,7 +130,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_user_Follow,
   },
   deleteFollow: {
-    path: '/user.SocialMediaService/DeleteFollow',
+    path: '/user.UserService/DeleteFollow',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.ID,
@@ -142,4 +142,4 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
   },
 };
 
-exports.SocialMediaServiceClient = grpc.makeGenericClientConstructor(SocialMediaServiceService);
+exports.UserServiceClient = grpc.makeGenericClientConstructor(UserServiceService);

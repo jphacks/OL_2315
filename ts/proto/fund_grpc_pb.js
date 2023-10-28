@@ -40,9 +40,9 @@ function deserialize_google_protobuf_Empty(buffer_arg) {
 }
 
 
-var FoundServiceService = exports.FoundServiceService = {
+var FundServiceService = exports.FundServiceService = {
   createFund: {
-    path: '/fund.FoundService/CreateFund',
+    path: '/fund.FundService/CreateFund',
     requestStream: false,
     responseStream: false,
     requestType: fund_pb.Fund,
@@ -53,7 +53,7 @@ var FoundServiceService = exports.FoundServiceService = {
     responseDeserialize: deserialize_fund_Fund,
   },
   getFundById: {
-    path: '/fund.FoundService/GetFundById',
+    path: '/fund.FundService/GetFundById',
     requestStream: false,
     responseStream: false,
     requestType: fund_pb.ID,
@@ -64,7 +64,7 @@ var FoundServiceService = exports.FoundServiceService = {
     responseDeserialize: deserialize_fund_Fund,
   },
   updateFund: {
-    path: '/fund.FoundService/UpdateFund',
+    path: '/fund.FundService/UpdateFund',
     requestStream: false,
     responseStream: false,
     requestType: fund_pb.Fund,
@@ -75,7 +75,7 @@ var FoundServiceService = exports.FoundServiceService = {
     responseDeserialize: deserialize_fund_Fund,
   },
   deleteFund: {
-    path: '/fund.FoundService/DeleteFund',
+    path: '/fund.FundService/DeleteFund',
     requestStream: false,
     responseStream: false,
     requestType: fund_pb.ID,
@@ -87,4 +87,4 @@ var FoundServiceService = exports.FoundServiceService = {
   },
 };
 
-exports.FoundServiceClient = grpc.makeGenericClientConstructor(FoundServiceService);
+exports.FundServiceClient = grpc.makeGenericClientConstructor(FundServiceService);

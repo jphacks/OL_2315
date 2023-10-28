@@ -9,23 +9,23 @@ import * as sns_pb from "./sns_pb";
 import * as google_protobuf_timestamp_pb from "google-protobuf/google/protobuf/timestamp_pb";
 import * as google_protobuf_empty_pb from "google-protobuf/google/protobuf/empty_pb";
 
-interface ISocialMediaServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
-    createPost: ISocialMediaServiceService_ICreatePost;
-    getPostById: ISocialMediaServiceService_IGetPostById;
-    updatePost: ISocialMediaServiceService_IUpdatePost;
-    deletePost: ISocialMediaServiceService_IDeletePost;
-    createComment: ISocialMediaServiceService_ICreateComment;
-    getCommentById: ISocialMediaServiceService_IGetCommentById;
-    updateComment: ISocialMediaServiceService_IUpdateComment;
-    deleteComment: ISocialMediaServiceService_IDeleteComment;
-    createLike: ISocialMediaServiceService_ICreateLike;
-    getLikeById: ISocialMediaServiceService_IGetLikeById;
-    updateLike: ISocialMediaServiceService_IUpdateLike;
-    deleteLike: ISocialMediaServiceService_IDeleteLike;
+interface ISNSServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceImplementation> {
+    createPost: ISNSServiceService_ICreatePost;
+    getPostById: ISNSServiceService_IGetPostById;
+    updatePost: ISNSServiceService_IUpdatePost;
+    deletePost: ISNSServiceService_IDeletePost;
+    createComment: ISNSServiceService_ICreateComment;
+    getCommentById: ISNSServiceService_IGetCommentById;
+    updateComment: ISNSServiceService_IUpdateComment;
+    deleteComment: ISNSServiceService_IDeleteComment;
+    createLike: ISNSServiceService_ICreateLike;
+    getLikeById: ISNSServiceService_IGetLikeById;
+    updateLike: ISNSServiceService_IUpdateLike;
+    deleteLike: ISNSServiceService_IDeleteLike;
 }
 
-interface ISocialMediaServiceService_ICreatePost extends grpc.MethodDefinition<sns_pb.Post, sns_pb.Post> {
-    path: "/sns.SocialMediaService/CreatePost";
+interface ISNSServiceService_ICreatePost extends grpc.MethodDefinition<sns_pb.Post, sns_pb.Post> {
+    path: "/sns.SNSService/CreatePost";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.Post>;
@@ -33,8 +33,8 @@ interface ISocialMediaServiceService_ICreatePost extends grpc.MethodDefinition<s
     responseSerialize: grpc.serialize<sns_pb.Post>;
     responseDeserialize: grpc.deserialize<sns_pb.Post>;
 }
-interface ISocialMediaServiceService_IGetPostById extends grpc.MethodDefinition<sns_pb.ID, sns_pb.Post> {
-    path: "/sns.SocialMediaService/GetPostById";
+interface ISNSServiceService_IGetPostById extends grpc.MethodDefinition<sns_pb.ID, sns_pb.Post> {
+    path: "/sns.SNSService/GetPostById";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.ID>;
@@ -42,8 +42,8 @@ interface ISocialMediaServiceService_IGetPostById extends grpc.MethodDefinition<
     responseSerialize: grpc.serialize<sns_pb.Post>;
     responseDeserialize: grpc.deserialize<sns_pb.Post>;
 }
-interface ISocialMediaServiceService_IUpdatePost extends grpc.MethodDefinition<sns_pb.Post, sns_pb.Post> {
-    path: "/sns.SocialMediaService/UpdatePost";
+interface ISNSServiceService_IUpdatePost extends grpc.MethodDefinition<sns_pb.Post, sns_pb.Post> {
+    path: "/sns.SNSService/UpdatePost";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.Post>;
@@ -51,8 +51,8 @@ interface ISocialMediaServiceService_IUpdatePost extends grpc.MethodDefinition<s
     responseSerialize: grpc.serialize<sns_pb.Post>;
     responseDeserialize: grpc.deserialize<sns_pb.Post>;
 }
-interface ISocialMediaServiceService_IDeletePost extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
-    path: "/sns.SocialMediaService/DeletePost";
+interface ISNSServiceService_IDeletePost extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
+    path: "/sns.SNSService/DeletePost";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.ID>;
@@ -60,8 +60,8 @@ interface ISocialMediaServiceService_IDeletePost extends grpc.MethodDefinition<s
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
-interface ISocialMediaServiceService_ICreateComment extends grpc.MethodDefinition<sns_pb.Comment, sns_pb.Comment> {
-    path: "/sns.SocialMediaService/CreateComment";
+interface ISNSServiceService_ICreateComment extends grpc.MethodDefinition<sns_pb.Comment, sns_pb.Comment> {
+    path: "/sns.SNSService/CreateComment";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.Comment>;
@@ -69,8 +69,8 @@ interface ISocialMediaServiceService_ICreateComment extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<sns_pb.Comment>;
     responseDeserialize: grpc.deserialize<sns_pb.Comment>;
 }
-interface ISocialMediaServiceService_IGetCommentById extends grpc.MethodDefinition<sns_pb.ID, sns_pb.Comment> {
-    path: "/sns.SocialMediaService/GetCommentById";
+interface ISNSServiceService_IGetCommentById extends grpc.MethodDefinition<sns_pb.ID, sns_pb.Comment> {
+    path: "/sns.SNSService/GetCommentById";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.ID>;
@@ -78,8 +78,8 @@ interface ISocialMediaServiceService_IGetCommentById extends grpc.MethodDefiniti
     responseSerialize: grpc.serialize<sns_pb.Comment>;
     responseDeserialize: grpc.deserialize<sns_pb.Comment>;
 }
-interface ISocialMediaServiceService_IUpdateComment extends grpc.MethodDefinition<sns_pb.Comment, sns_pb.Comment> {
-    path: "/sns.SocialMediaService/UpdateComment";
+interface ISNSServiceService_IUpdateComment extends grpc.MethodDefinition<sns_pb.Comment, sns_pb.Comment> {
+    path: "/sns.SNSService/UpdateComment";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.Comment>;
@@ -87,8 +87,8 @@ interface ISocialMediaServiceService_IUpdateComment extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<sns_pb.Comment>;
     responseDeserialize: grpc.deserialize<sns_pb.Comment>;
 }
-interface ISocialMediaServiceService_IDeleteComment extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
-    path: "/sns.SocialMediaService/DeleteComment";
+interface ISNSServiceService_IDeleteComment extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
+    path: "/sns.SNSService/DeleteComment";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.ID>;
@@ -96,8 +96,8 @@ interface ISocialMediaServiceService_IDeleteComment extends grpc.MethodDefinitio
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
-interface ISocialMediaServiceService_ICreateLike extends grpc.MethodDefinition<sns_pb.Like, sns_pb.Like> {
-    path: "/sns.SocialMediaService/CreateLike";
+interface ISNSServiceService_ICreateLike extends grpc.MethodDefinition<sns_pb.Like, sns_pb.Like> {
+    path: "/sns.SNSService/CreateLike";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.Like>;
@@ -105,8 +105,8 @@ interface ISocialMediaServiceService_ICreateLike extends grpc.MethodDefinition<s
     responseSerialize: grpc.serialize<sns_pb.Like>;
     responseDeserialize: grpc.deserialize<sns_pb.Like>;
 }
-interface ISocialMediaServiceService_IGetLikeById extends grpc.MethodDefinition<sns_pb.ID, sns_pb.Like> {
-    path: "/sns.SocialMediaService/GetLikeById";
+interface ISNSServiceService_IGetLikeById extends grpc.MethodDefinition<sns_pb.ID, sns_pb.Like> {
+    path: "/sns.SNSService/GetLikeById";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.ID>;
@@ -114,8 +114,8 @@ interface ISocialMediaServiceService_IGetLikeById extends grpc.MethodDefinition<
     responseSerialize: grpc.serialize<sns_pb.Like>;
     responseDeserialize: grpc.deserialize<sns_pb.Like>;
 }
-interface ISocialMediaServiceService_IUpdateLike extends grpc.MethodDefinition<sns_pb.Like, sns_pb.Like> {
-    path: "/sns.SocialMediaService/UpdateLike";
+interface ISNSServiceService_IUpdateLike extends grpc.MethodDefinition<sns_pb.Like, sns_pb.Like> {
+    path: "/sns.SNSService/UpdateLike";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.Like>;
@@ -123,8 +123,8 @@ interface ISocialMediaServiceService_IUpdateLike extends grpc.MethodDefinition<s
     responseSerialize: grpc.serialize<sns_pb.Like>;
     responseDeserialize: grpc.deserialize<sns_pb.Like>;
 }
-interface ISocialMediaServiceService_IDeleteLike extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
-    path: "/sns.SocialMediaService/DeleteLike";
+interface ISNSServiceService_IDeleteLike extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
+    path: "/sns.SNSService/DeleteLike";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<sns_pb.ID>;
@@ -133,9 +133,9 @@ interface ISocialMediaServiceService_IDeleteLike extends grpc.MethodDefinition<s
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
 
-export const SocialMediaServiceService: ISocialMediaServiceService;
+export const SNSServiceService: ISNSServiceService;
 
-export interface ISocialMediaServiceServer {
+export interface ISNSServiceServer {
     createPost: grpc.handleUnaryCall<sns_pb.Post, sns_pb.Post>;
     getPostById: grpc.handleUnaryCall<sns_pb.ID, sns_pb.Post>;
     updatePost: grpc.handleUnaryCall<sns_pb.Post, sns_pb.Post>;
@@ -150,7 +150,7 @@ export interface ISocialMediaServiceServer {
     deleteLike: grpc.handleUnaryCall<sns_pb.ID, google_protobuf_empty_pb.Empty>;
 }
 
-export interface ISocialMediaServiceClient {
+export interface ISNSServiceClient {
     createPost(request: sns_pb.Post, callback: (error: grpc.ServiceError | null, response: sns_pb.Post) => void): grpc.ClientUnaryCall;
     createPost(request: sns_pb.Post, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: sns_pb.Post) => void): grpc.ClientUnaryCall;
     createPost(request: sns_pb.Post, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: sns_pb.Post) => void): grpc.ClientUnaryCall;
@@ -189,7 +189,7 @@ export interface ISocialMediaServiceClient {
     deleteLike(request: sns_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
 }
 
-export class SocialMediaServiceClient extends grpc.Client implements ISocialMediaServiceClient {
+export class SNSServiceClient extends grpc.Client implements ISNSServiceClient {
     constructor(address: string, credentials: grpc.ChannelCredentials, options?: object);
     public createPost(request: sns_pb.Post, callback: (error: grpc.ServiceError | null, response: sns_pb.Post) => void): grpc.ClientUnaryCall;
     public createPost(request: sns_pb.Post, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: sns_pb.Post) => void): grpc.ClientUnaryCall;

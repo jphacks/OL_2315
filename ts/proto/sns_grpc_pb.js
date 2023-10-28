@@ -62,9 +62,9 @@ function deserialize_sns_Post(buffer_arg) {
 }
 
 
-var SocialMediaServiceService = exports.SocialMediaServiceService = {
+var SNSServiceService = exports.SNSServiceService = {
   createPost: {
-    path: '/sns.SocialMediaService/CreatePost',
+    path: '/sns.SNSService/CreatePost',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.Post,
@@ -75,7 +75,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Post,
   },
   getPostById: {
-    path: '/sns.SocialMediaService/GetPostById',
+    path: '/sns.SNSService/GetPostById',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.ID,
@@ -86,7 +86,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Post,
   },
   updatePost: {
-    path: '/sns.SocialMediaService/UpdatePost',
+    path: '/sns.SNSService/UpdatePost',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.Post,
@@ -97,7 +97,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Post,
   },
   deletePost: {
-    path: '/sns.SocialMediaService/DeletePost',
+    path: '/sns.SNSService/DeletePost',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.ID,
@@ -108,7 +108,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   createComment: {
-    path: '/sns.SocialMediaService/CreateComment',
+    path: '/sns.SNSService/CreateComment',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.Comment,
@@ -119,7 +119,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Comment,
   },
   getCommentById: {
-    path: '/sns.SocialMediaService/GetCommentById',
+    path: '/sns.SNSService/GetCommentById',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.ID,
@@ -130,7 +130,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Comment,
   },
   updateComment: {
-    path: '/sns.SocialMediaService/UpdateComment',
+    path: '/sns.SNSService/UpdateComment',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.Comment,
@@ -141,7 +141,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Comment,
   },
   deleteComment: {
-    path: '/sns.SocialMediaService/DeleteComment',
+    path: '/sns.SNSService/DeleteComment',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.ID,
@@ -152,7 +152,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
   createLike: {
-    path: '/sns.SocialMediaService/CreateLike',
+    path: '/sns.SNSService/CreateLike',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.Like,
@@ -163,7 +163,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Like,
   },
   getLikeById: {
-    path: '/sns.SocialMediaService/GetLikeById',
+    path: '/sns.SNSService/GetLikeById',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.ID,
@@ -174,7 +174,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Like,
   },
   updateLike: {
-    path: '/sns.SocialMediaService/UpdateLike',
+    path: '/sns.SNSService/UpdateLike',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.Like,
@@ -185,7 +185,7 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
     responseDeserialize: deserialize_sns_Like,
   },
   deleteLike: {
-    path: '/sns.SocialMediaService/DeleteLike',
+    path: '/sns.SNSService/DeleteLike',
     requestStream: false,
     responseStream: false,
     requestType: sns_pb.ID,
@@ -197,4 +197,4 @@ var SocialMediaServiceService = exports.SocialMediaServiceService = {
   },
 };
 
-exports.SocialMediaServiceClient = grpc.makeGenericClientConstructor(SocialMediaServiceService);
+exports.SNSServiceClient = grpc.makeGenericClientConstructor(SNSServiceService);

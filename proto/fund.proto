@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package fund;
 
-option go_package = "/fund";
+option go_package = "/grpc_fund";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
@@ -19,7 +19,7 @@ message ID {
     string id = 1;
 }
 
-service FoundService {
+service FundService {
     rpc CreateFund(Fund) returns (Fund);
     rpc GetFundById(ID) returns (Fund);
     rpc UpdateFund(Fund) returns (Fund);

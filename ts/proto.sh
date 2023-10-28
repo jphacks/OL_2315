@@ -3,6 +3,7 @@ PROTO_DEST=./proto
 # protoファイルが置いてあるディレクトリ
 PROTO_SRC=../proto
 
+rm -rf ${PROTO_DEST}
 mkdir -p ${PROTO_DEST}
 
 # Protocol BuffersからnodeのgRPCコードを自動生成
