@@ -1,14 +1,12 @@
 {
-    "name": "grpc-hello",
+    "name": "grpc-ts",
     "version": "1.0.0",
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
     },
     "scripts": {
-      "lint": "yarn run eslint --fix --ext .ts src",
-      "clean": "rm -rf ./dist && rm -rf ./src/proto && mkdir -p ./src/proto ",
-      "build": "sh ./proto.sh ./user.proto ./src/proto && yarn run tsc; cp -r ./src/proto ./dist/src/proto"
+      "lint": "yarn run eslint --fix --ext .ts src"
     },
     "devDependencies": {
       "@grpc/grpc-js": "^1.4.2",
