@@ -8,5 +8,11 @@ func (d *DB) GetUserById(id string) (*model.User, error) {
 		return nil, err
 	}
 	return user, nil
+}
 
+func (d *DB) CreateUser(user *model.User) error {
+	if err := d.Conn.Create(user).Error; err != nil {
+		return err
+	}
+	return nil
 }
