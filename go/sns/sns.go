@@ -1,12 +1,11 @@
 package sns
 
 import (
+	"jphacks2023-ol2315/db"
 	"jphacks2023-ol2315/lib/grpc_sns"
-
-	"gorm.io/gorm"
 )
 
-func NewSNSService(db *gorm.DB) *snsService {
+func NewSNSService(db *db.DB) *snsService {
 	return &snsService{
 		db: db,
 	}
@@ -14,5 +13,5 @@ func NewSNSService(db *gorm.DB) *snsService {
 
 type snsService struct {
 	grpc_sns.UnimplementedSNSServiceServer
-	db *gorm.DB
+	db *db.DB
 }
