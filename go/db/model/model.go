@@ -73,3 +73,14 @@ func (r Role) Int32() int32 {
 		return -1
 	}
 }
+
+func (r Role) ConvertIntToRole() Role {
+	switch r.Int32() {
+	case 0:
+		return RoleUser
+	case 1:
+		return RoleAdmin
+	default:
+		return RoleUser
+	}
+}
