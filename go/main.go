@@ -25,6 +25,7 @@ func main() {
 
 	s := grpc.NewServer()
 	dbConn := db.ConnectionDB()
+	dbConn.CreateTable()
 	grpc_user.RegisterUserServiceServer(s, user.NewUserService(dbConn))
 	grpc_sns.RegisterSNSServiceServer(s, sns.NewSNSService(dbConn))
 	grpc_fund.RegisterFundServiceServer(s, fund.NewFundService(dbConn))
