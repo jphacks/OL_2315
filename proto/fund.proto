@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package fund;
+
+option go_package = "/fund";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message Fund {
+    string uuid = 1;
+    string user_id = 2;
+    string post_id = 3;
+    float amount = 4;
+    google.protobuf.Timestamp created_at = 5;
+}
+
+message ID {
+    string id = 1;
+}
+
+service FoundService {
+    rpc CreateFund(Fund) returns (Fund);
+    rpc GetFundById(ID) returns (Fund);
+    rpc UpdateFund(Fund) returns (Fund);
+    rpc DeleteFund(ID) returns (google.protobuf.Empty);
+}

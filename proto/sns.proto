@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package sns;
+
+option go_package = "/sns";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+message Post {
+  string post_uuid = 1;
+  string user_id = 2;
+  string body = 3;
+  google.protobuf.Timestamp created_at = 4;
+  google.protobuf.Timestamp updated_at = 5;
+  bool is_public = 6;
+}
+
+message Comment {
+  string uuid = 1;
+  string content = 2;
+  string user_id = 3;
+  string post_id = 4;
+}
+
+message Like {
+  string uuid = 1;
+  string post_comment_id = 2;
+  string user_id = 3;
+  string post_id = 4;
+}
+
+message ID {
+  string id = 1;
+}
+
+service SocialMediaService {
+  rpc CreatePost(Post) returns (Post);
+  rpc GetPostById(ID) returns (Post);
+  rpc UpdatePost(Post) returns (Post);
+  rpc DeletePost(ID) returns (google.protobuf.Empty);
+
+  rpc CreateComment(Comment) returns (Comment);
+  rpc GetCommentById(ID) returns (Comment);
+  rpc UpdateComment(Comment) returns (Comment);
+  rpc DeleteComment(ID) returns (google.protobuf.Empty);
+
+  rpc CreateLike(Like) returns (Like);
+  rpc GetLikeById(ID) returns (Like);
+  rpc UpdateLike(Like) returns (Like);
+  rpc DeleteLike(ID) returns (google.protobuf.Empty);
+}
