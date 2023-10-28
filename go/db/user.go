@@ -16,3 +16,17 @@ func (d *DB) CreateUser(user *model.User) error {
 	}
 	return nil
 }
+
+func (d *DB) UpdateUser(user *model.User) error {
+	if err := d.Conn.Save(user).Error; err != nil {
+		return err
+	}
+	return nil
+}
+
+func (d *DB) DeleteUser(id string) error {
+	if err := d.Conn.Where("user_uuid = ?", id).Delete(&model.User{}).Error; err != nil {
+		return err
+	}
+	return nil
+}
