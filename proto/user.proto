@@ -40,8 +40,7 @@ service UserService {
     rpc UpdateUser(User) returns (User);
     rpc DeleteUser(ID) returns (google.protobuf.Empty);
 
-    rpc CreateFollow(Follow) returns (Follow);
+    rpc FollowUser(Follow) returns (Follow);
     rpc GetFollowById(ID) returns (Follow);
-    rpc UpdateFollow(Follow) returns (Follow);
     rpc DeleteFollow(ID) returns (google.protobuf.Empty);
 }

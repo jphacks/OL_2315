@@ -24,9 +24,8 @@ const (
 	UserService_GetUserById_FullMethodName   = "/user.UserService/GetUserById"
 	UserService_UpdateUser_FullMethodName    = "/user.UserService/UpdateUser"
 	UserService_DeleteUser_FullMethodName    = "/user.UserService/DeleteUser"
-	UserService_CreateFollow_FullMethodName  = "/user.UserService/CreateFollow"
+	UserService_FollowUser_FullMethodName    = "/user.UserService/FollowUser"
 	UserService_GetFollowById_FullMethodName = "/user.UserService/GetFollowById"
-	UserService_UpdateFollow_FullMethodName  = "/user.UserService/UpdateFollow"
 	UserService_DeleteFollow_FullMethodName  = "/user.UserService/DeleteFollow"
 )
 
@@ -38,9 +37,8 @@ type UserServiceClient interface {
 	GetUserById(ctx context.Context, in *ID, opts ...grpc.CallOption) (*User, error)
 	UpdateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
 	DeleteUser(ctx context.Context, in *ID, opts ...grpc.CallOption) (*emptypb.Empty, error)
-	CreateFollow(ctx context.Context, in *Follow, opts ...grpc.CallOption) (*Follow, error)
+	FollowUser(ctx context.Context, in *Follow, opts ...grpc.CallOption) (*Follow, error)
 	GetFollowById(ctx context.Context, in *ID, opts ...grpc.CallOption) (*Follow, error)
-	UpdateFollow(ctx context.Context, in *Follow, opts ...grpc.CallOption) (*Follow, error)
 	DeleteFollow(ctx context.Context, in *ID, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
@@ -88,9 +86,9 @@ func (c *userServiceClient) DeleteUser(ctx context.Context, in *ID, opts ...grpc
 	return out, nil
 }
 
-func (c *userServiceClient) CreateFollow(ctx context.Context, in *Follow, opts ...grpc.CallOption) (*Follow, error) {
+func (c *userServiceClient) FollowUser(ctx context.Context, in *Follow, opts ...grpc.CallOption) (*Follow, error) {
 	out := new(Follow)
-	err := c.cc.Invoke(ctx, UserService_CreateFollow_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, UserService_FollowUser_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -100,15 +98,6 @@ func (c *userServiceClient) CreateFollow(ctx context.Context, in *Follow, opts .
 func (c *userServiceClient) GetFollowById(ctx context.Context, in *ID, opts ...grpc.CallOption) (*Follow, error) {
 	out := new(Follow)
 	err := c.cc.Invoke(ctx, UserService_GetFollowById_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *userServiceClient) UpdateFollow(ctx context.Context, in *Follow, opts ...grpc.CallOption) (*Follow, error) {
-	out := new(Follow)
-	err := c.cc.Invoke(ctx, UserService_UpdateFollow_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -132,9 +121,8 @@ type UserServiceServer interface {
 	GetUserById(context.Context, *ID) (*User, error)
 	UpdateUser(context.Context, *User) (*User, error)
 	DeleteUser(context.Context, *ID) (*emptypb.Empty, error)
-	CreateFollow(context.Context, *Follow) (*Follow, error)
+	FollowUser(context.Context, *Follow) (*Follow, error)
 	GetFollowById(context.Context, *ID) (*Follow, error)
-	UpdateFollow(context.Context, *Follow) (*Follow, error)
 	DeleteFollow(context.Context, *ID) (*emptypb.Empty, error)
 	mustEmbedUnimplementedUserServiceServer()
 }
@@ -155,14 +143,11 @@ func (UnimplementedUserServiceServer) UpdateUser(context.Context, *User) (*User,
 func (UnimplementedUserServiceServer) DeleteUser(context.Context, *ID) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
 }
-func (UnimplementedUserServiceServer) CreateFollow(context.Context, *Follow) (*Follow, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateFollow not implemented")
+func (UnimplementedUserServiceServer) FollowUser(context.Context, *Follow) (*Follow, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FollowUser not implemented")
 }
 func (UnimplementedUserServiceServer) GetFollowById(context.Context, *ID) (*Follow, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetFollowById not implemented")
-}
-func (UnimplementedUserServiceServer) UpdateFollow(context.Context, *Follow) (*Follow, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateFollow not implemented")
 }
 func (UnimplementedUserServiceServer) DeleteFollow(context.Context, *ID) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteFollow not implemented")
@@ -252,20 +237,20 @@ func _UserService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_CreateFollow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_FollowUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(Follow)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).CreateFollow(ctx, in)
+		return srv.(UserServiceServer).FollowUser(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: UserService_CreateFollow_FullMethodName,
+		FullMethod: UserService_FollowUser_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).CreateFollow(ctx, req.(*Follow))
+		return srv.(UserServiceServer).FollowUser(ctx, req.(*Follow))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -284,24 +269,6 @@ func _UserService_GetFollowById_Handler(srv interface{}, ctx context.Context, de
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(UserServiceServer).GetFollowById(ctx, req.(*ID))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _UserService_UpdateFollow_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Follow)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(UserServiceServer).UpdateFollow(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: UserService_UpdateFollow_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateFollow(ctx, req.(*Follow))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -348,16 +315,12 @@ var UserService_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserService_DeleteUser_Handler,
 		},
 		{
-			MethodName: "CreateFollow",
-			Handler:    _UserService_CreateFollow_Handler,
+			MethodName: "FollowUser",
+			Handler:    _UserService_FollowUser_Handler,
 		},
 		{
 			MethodName: "GetFollowById",
 			Handler:    _UserService_GetFollowById_Handler,
-		},
-		{
-			MethodName: "UpdateFollow",
-			Handler:    _UserService_UpdateFollow_Handler,
 		},
 		{
 			MethodName: "DeleteFollow",
