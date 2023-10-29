@@ -56,7 +56,20 @@ func (db *DB) CreateTable() {
 	if err := db.Conn.AutoMigrate(&model.Post{}); err != nil {
 		log.Fatalf("Database create table failed")
 	}
+
 	if err := db.Conn.AutoMigrate(&model.Comment{}); err != nil {
+		log.Fatalf("Database create table failed")
+	}
+
+	if err := db.Conn.AutoMigrate(&model.Like{}); err != nil {
+		log.Fatalf("Database create table failed")
+	}
+
+	if err := db.Conn.AutoMigrate(&model.Follow{}); err != nil {
+		log.Fatalf("Database create table failed")
+	}
+
+	if err := db.Conn.AutoMigrate(&model.Fund{}); err != nil {
 		log.Fatalf("Database create table failed")
 	}
 }
