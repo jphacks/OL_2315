@@ -1,6 +1,7 @@
 package sns
 
 import (
+	"context"
 	"jphacks2023-ol2315/db"
 	"jphacks2023-ol2315/db/model"
 	"jphacks2023-ol2315/lib/grpc_sns"
@@ -22,7 +23,7 @@ type snsService struct {
 	db *db.DB
 }
 
-func (s *snsService) GetPostById(request *grpc_sns.ID) (*grpc_sns.Post, error) {
+func (s *snsService) GetPostById(ctx context.Context, request *grpc_sns.ID) (*grpc_sns.Post, error) {
 	post, err := s.db.GetPostById(request.Id)
 	if err != nil {
 		return nil, err
@@ -41,7 +42,7 @@ func (s *snsService) GetPostById(request *grpc_sns.ID) (*grpc_sns.Post, error) {
 	}, nil
 }
 
-func (s *snsService) CreatePost(request *grpc_sns.Post) (*grpc_sns.Post, error) {
+func (s *snsService) CreatePost(ctx context.Context, request *grpc_sns.Post) (*grpc_sns.Post, error) {
 	post := &model.Post{
 		PostUUID:  uuid.New().String(),
 		UserID:    request.UserId,
@@ -68,7 +69,7 @@ func (s *snsService) CreatePost(request *grpc_sns.Post) (*grpc_sns.Post, error) 
 	}, nil
 }
 
-func (s *snsService) UpdatePost(request *grpc_sns.Post) (*grpc_sns.Post, error) {
+func (s *snsService) UpdatePost(ctx context.Context, request *grpc_sns.Post) (*grpc_sns.Post, error) {
 	post := &model.Post{
 		PostUUID:  request.PostUuid,
 		UserID:    request.UserId,
@@ -95,7 +96,7 @@ func (s *snsService) UpdatePost(request *grpc_sns.Post) (*grpc_sns.Post, error) 
 	}, nil
 }
 
-func (s *snsService) DeletePost(request *grpc_sns.ID) (*emptypb.Empty, error) {
+func (s *snsService) DeletePost(ctx context.Context, request *grpc_sns.ID) (*emptypb.Empty, error) {
 	err := s.db.DeletePost(request.Id)
 	if err != nil {
 		return nil, err
