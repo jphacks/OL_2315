@@ -13,7 +13,7 @@ import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-
  * Therefore it is highly recommended to use the babel or swc plugin for production.
  */
 const documents = {
-    "\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      image_url\n      ...UserPopupFragment\n    }\n  }\n": types.PostFragmentFragmentDoc,
+    "\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      screen_name\n      handle\n      image_url\n      ...UserPopupFragment\n    }\n  }\n": types.PostFragmentFragmentDoc,
     "\n  fragment PostDetailFragment on Post {\n    post_uuid\n    title\n    body\n    created_at\n    updated_at\n    is_public\n    user {\n      ...UserFragment\n    }\n  }\n": types.PostDetailFragmentFragmentDoc,
     "\n  fragment UserPopupFragment on User {\n    user_uuid\n    handle\n    screen_name\n    bio\n  }\n": types.UserPopupFragmentFragmentDoc,
     "\n  query GetPostDetailQuery($uuid: UUID!) {\n    getPostByUUID(uuid: $uuid) {\n      ...PostDetailFragment\n    }\n  }\n": types.GetPostDetailQueryDocument,
@@ -47,7 +47,7 @@ export function graphql(source: string): unknown;
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
-export function graphql(source: "\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      image_url\n      ...UserPopupFragment\n    }\n  }\n"): (typeof documents)["\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      image_url\n      ...UserPopupFragment\n    }\n  }\n"];
+export function graphql(source: "\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      screen_name\n      handle\n      image_url\n      ...UserPopupFragment\n    }\n  }\n"): (typeof documents)["\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      screen_name\n      handle\n      image_url\n      ...UserPopupFragment\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */

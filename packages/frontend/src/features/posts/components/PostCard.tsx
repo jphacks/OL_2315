@@ -1,9 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Card, CardBody, CardFooter, Button, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, CardHeader, Image } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Button, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, CardHeader, Image, Spacer } from "@nextui-org/react";
 import { FragmentType, useFragment } from "src/lib/generated";
 import { UserCardForPost } from "./UserCardForPost";
 import { graphql } from "src/lib/generated/gql";
-import { DotsVertical, Heart, MessageChatbot } from "tabler-icons-react";
+import { Details, DotsVertical, Heart, MessageChatbot } from "tabler-icons-react";
 
 // クエリするフラグメントを定義
 const PostFragment = graphql(`
@@ -12,6 +12,8 @@ const PostFragment = graphql(`
     title
     body
     user {
+      screen_name
+      handle
       image_url
       ...UserPopupFragment
     }
@@ -23,11 +25,7 @@ const PostCard = ({ post: post_frag }: { post: FragmentType<typeof PostFragment>
   const post = useFragment(PostFragment, post_frag);
 
   return (
-    <div className="grid grid-cols-3 flex-row  gap-2 h-unit-72">
-      <Card isBlurred className="col-span-1 h-full shadow-sm" shadow="sm">
-        <Image src="https://picsum.photos/400" width={400} height={400} className="h-full overflow-hidden" />
-      </Card>
-
+    <div className="grid grid-cols-3 flex-row  gap-2">
       <Card isBlurred className="col-span-2 w-full bg-secondary" shadow="sm">
         <CardHeader>
           <div className="flex">
@@ -55,12 +53,16 @@ const PostCard = ({ post: post_frag }: { post: FragmentType<typeof PostFragment>
           </div>
         </CardBody>
         <CardFooter className="justify-end">
-          <div className="flex flex-row">
-            <Dropdown>
+          <div className="flex flex-row gap-2">
+            <Dropdown className="h-min">
               <DropdownTrigger>
-                <Button color="secondary" variant="shadow" className="rounded-full hover:-translate-y-1">
-                  ユーザのプロフィール
-                </Button>
+                <div className="flex flex-row gap-2 hover:-translate-y-1 duration-75">
+                  <Image src={post.user.image_url} className="rounded-full h-unit-4xl" />
+                  <div className="flex flex-col justify-start m-4">
+                    <p className="text-xl">{post.user.screen_name}</p>
+                    <p className="text-xl">@{post.user.handle}</p>
+                  </div>
+                </div>
               </DropdownTrigger>
               <DropdownMenu>
                 <DropdownItem>
@@ -68,18 +70,22 @@ const PostCard = ({ post: post_frag }: { post: FragmentType<typeof PostFragment>
                 </DropdownItem>
               </DropdownMenu>
             </Dropdown>
-            <Button color="primary" variant="shadow" className="rounded-full hover:-translate-y-1">
+            <Button color="primary" variant="shadow" size="lg" className="h-unit-4xl hover:-translate-y-1">
               <Link
                 to="/auth/posts/$post_uuid"
                 params={{
                   post_uuid: post.post_uuid,
                 }}
               >
+                <Details size={24} strokeWidth={1.5} />
                 詳細を見る
               </Link>
             </Button>
           </div>
         </CardFooter>
+      </Card>
+      <Card isBlurred className="col-span-1 h-full shadow-sm" shadow="sm">
+        <Image src="https://picsum.photos/400" width={400} height={400} className="h-full overflow-hidden" />
       </Card>
     </div>
   );
