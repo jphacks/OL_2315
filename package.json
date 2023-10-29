@@ -1,0 +1,38 @@
+{
+  "name": "callstack",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "turbo build",
+    "typecheck": "turbo typecheck",
+    "format": "turbo format",
+    "lint": "turbo lint",
+    "prigen": "turbo prigen",
+    "primig": "turbo primig",
+    "priseed": "turbo priseed",
+    "prepare": "husky install && turbo prigen && turbo codegen"
+  },
+  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "git+github.com:calloc134/callstack.git"
+  },
+  "author": "calloc134 <calloc134personal@gmail.com>",
+  "license": "MIT",
+  "packageManager": "pnpm@78.6.2",
+  "engines": {
+    "pnpm": ">=8.6.2"
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@commitlint/cli": "^17.6.7",
+    "@commitlint/config-conventional": "^17.6.7",
+    "husky": "^8.0.3",
+    "tsc": "^2.0.4",
+    "tsx": "^3.12.7",
+    "turbo": "^1.10.12"
+  },
+  "devDependencies": {
+    "graphql-config": "^5.0.2",
+    "husky": "^8.0.0"
+  }
+}
