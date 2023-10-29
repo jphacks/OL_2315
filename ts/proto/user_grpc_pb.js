@@ -96,8 +96,8 @@ var UserServiceService = exports.UserServiceService = {
     responseSerialize: serialize_google_protobuf_Empty,
     responseDeserialize: deserialize_google_protobuf_Empty,
   },
-  createFollow: {
-    path: '/user.UserService/CreateFollow',
+  followUser: {
+    path: '/user.UserService/FollowUser',
     requestStream: false,
     responseStream: false,
     requestType: user_pb.Follow,
@@ -115,17 +115,6 @@ var UserServiceService = exports.UserServiceService = {
     responseType: user_pb.Follow,
     requestSerialize: serialize_user_ID,
     requestDeserialize: deserialize_user_ID,
-    responseSerialize: serialize_user_Follow,
-    responseDeserialize: deserialize_user_Follow,
-  },
-  updateFollow: {
-    path: '/user.UserService/UpdateFollow',
-    requestStream: false,
-    responseStream: false,
-    requestType: user_pb.Follow,
-    responseType: user_pb.Follow,
-    requestSerialize: serialize_user_Follow,
-    requestDeserialize: deserialize_user_Follow,
     responseSerialize: serialize_user_Follow,
     responseDeserialize: deserialize_user_Follow,
   },

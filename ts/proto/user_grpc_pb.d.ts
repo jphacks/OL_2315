@@ -14,9 +14,8 @@ interface IUserServiceService extends grpc.ServiceDefinition<grpc.UntypedService
     getUserById: IUserServiceService_IGetUserById;
     updateUser: IUserServiceService_IUpdateUser;
     deleteUser: IUserServiceService_IDeleteUser;
-    createFollow: IUserServiceService_ICreateFollow;
+    followUser: IUserServiceService_IFollowUser;
     getFollowById: IUserServiceService_IGetFollowById;
-    updateFollow: IUserServiceService_IUpdateFollow;
     deleteFollow: IUserServiceService_IDeleteFollow;
 }
 
@@ -56,8 +55,8 @@ interface IUserServiceService_IDeleteUser extends grpc.MethodDefinition<user_pb.
     responseSerialize: grpc.serialize<google_protobuf_empty_pb.Empty>;
     responseDeserialize: grpc.deserialize<google_protobuf_empty_pb.Empty>;
 }
-interface IUserServiceService_ICreateFollow extends grpc.MethodDefinition<user_pb.Follow, user_pb.Follow> {
-    path: "/user.UserService/CreateFollow";
+interface IUserServiceService_IFollowUser extends grpc.MethodDefinition<user_pb.Follow, user_pb.Follow> {
+    path: "/user.UserService/FollowUser";
     requestStream: false;
     responseStream: false;
     requestSerialize: grpc.serialize<user_pb.Follow>;
@@ -71,15 +70,6 @@ interface IUserServiceService_IGetFollowById extends grpc.MethodDefinition<user_
     responseStream: false;
     requestSerialize: grpc.serialize<user_pb.ID>;
     requestDeserialize: grpc.deserialize<user_pb.ID>;
-    responseSerialize: grpc.serialize<user_pb.Follow>;
-    responseDeserialize: grpc.deserialize<user_pb.Follow>;
-}
-interface IUserServiceService_IUpdateFollow extends grpc.MethodDefinition<user_pb.Follow, user_pb.Follow> {
-    path: "/user.UserService/UpdateFollow";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<user_pb.Follow>;
-    requestDeserialize: grpc.deserialize<user_pb.Follow>;
     responseSerialize: grpc.serialize<user_pb.Follow>;
     responseDeserialize: grpc.deserialize<user_pb.Follow>;
 }
@@ -100,9 +90,8 @@ export interface IUserServiceServer {
     getUserById: grpc.handleUnaryCall<user_pb.ID, user_pb.User>;
     updateUser: grpc.handleUnaryCall<user_pb.User, user_pb.User>;
     deleteUser: grpc.handleUnaryCall<user_pb.ID, google_protobuf_empty_pb.Empty>;
-    createFollow: grpc.handleUnaryCall<user_pb.Follow, user_pb.Follow>;
+    followUser: grpc.handleUnaryCall<user_pb.Follow, user_pb.Follow>;
     getFollowById: grpc.handleUnaryCall<user_pb.ID, user_pb.Follow>;
-    updateFollow: grpc.handleUnaryCall<user_pb.Follow, user_pb.Follow>;
     deleteFollow: grpc.handleUnaryCall<user_pb.ID, google_protobuf_empty_pb.Empty>;
 }
 
@@ -119,15 +108,12 @@ export interface IUserServiceClient {
     deleteUser(request: user_pb.ID, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteUser(request: user_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteUser(request: user_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    createFollow(request: user_pb.Follow, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    createFollow(request: user_pb.Follow, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    createFollow(request: user_pb.Follow, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
+    followUser(request: user_pb.Follow, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
+    followUser(request: user_pb.Follow, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
+    followUser(request: user_pb.Follow, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     getFollowById(request: user_pb.ID, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     getFollowById(request: user_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     getFollowById(request: user_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    updateFollow(request: user_pb.Follow, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    updateFollow(request: user_pb.Follow, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    updateFollow(request: user_pb.Follow, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     deleteFollow(request: user_pb.ID, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteFollow(request: user_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteFollow(request: user_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
@@ -147,15 +133,12 @@ export class UserServiceClient extends grpc.Client implements IUserServiceClient
     public deleteUser(request: user_pb.ID, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteUser(request: user_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteUser(request: user_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
-    public createFollow(request: user_pb.Follow, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    public createFollow(request: user_pb.Follow, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    public createFollow(request: user_pb.Follow, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
+    public followUser(request: user_pb.Follow, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
+    public followUser(request: user_pb.Follow, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
+    public followUser(request: user_pb.Follow, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     public getFollowById(request: user_pb.ID, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     public getFollowById(request: user_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     public getFollowById(request: user_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    public updateFollow(request: user_pb.Follow, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    public updateFollow(request: user_pb.Follow, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
-    public updateFollow(request: user_pb.Follow, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: user_pb.Follow) => void): grpc.ClientUnaryCall;
     public deleteFollow(request: user_pb.ID, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteFollow(request: user_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteFollow(request: user_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
