@@ -35,7 +35,7 @@ export const Document = () => {
       <div className="flex flex-col">
         <Navbar className="bg-gradient-to-r from-red-600/20 via-blue-300 bg-purple-500/80 transition-colors backdrop-blur-sm shadow-md rounded-b-sm hover:via-blue-200">
           <NavbarBrand>
-            <Tooltip content="callstack" color="secondary">
+            <Tooltip content="DIGICRIE" color="secondary">
               <Link to="/">
                 <Image src="/digicrie_title.png" radius="none" className="w-unit-4xl" />
               </Link>
