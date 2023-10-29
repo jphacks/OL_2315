@@ -8,6 +8,7 @@ import { UserDetailPage } from "./features/users/pages/UserDetailPage";
 import { PostsPage } from "./features/posts/pages/PostsPage";
 import { PostDetailPage } from "./features/posts/pages/PostDetailPage";
 import { CallBackPage } from "./callback";
+import { CreatePostPage } from "./features/posts/pages/CreatePostPage";
 
 // 以下、ルーティングの設定
 const callStackRootRoute = new RootRoute({
@@ -65,7 +66,6 @@ const authenticatedPostRoute = new Route({
   getParentRoute: () => protectedRoute,
   path: "posts",
 });
-
 // auth/usersルート インデックスの設定
 const usersRoute = new Route({
   // 親ルートを指定
@@ -88,6 +88,14 @@ const postsRoute = new Route({
   getParentRoute: () => authenticatedPostRoute,
   path: "/",
   component: () => <PostsPage />,
+});
+
+// auth/posts/createルートの設定
+const postCreateRoute = new Route({
+  // 親ルートを指定
+  getParentRoute: () => authenticatedPostRoute,
+  path: "create",
+  component: () => <CreatePostPage />,
 });
 
 // auth/posts/$post_uuidルートの設定
@@ -120,6 +128,8 @@ const router = new Router({
       authenticatedPostRoute.addChildren([
         // /auth/posts/
         postsRoute,
+        // /auth/posts/create
+        postCreateRoute,
         // /auth/posts/$post_uuid
         postDetailRoute,
       ]),

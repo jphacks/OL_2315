@@ -16,6 +16,7 @@ const documents = {
     "\n  fragment PostFragment on Post {\n    post_uuid\n    title\n    body\n    user {\n      screen_name\n      handle\n      image_url\n      ...UserPopupFragment\n    }\n  }\n": types.PostFragmentFragmentDoc,
     "\n  fragment PostDetailFragment on Post {\n    post_uuid\n    title\n    body\n    created_at\n    updated_at\n    is_public\n    user {\n      ...UserFragment\n    }\n  }\n": types.PostDetailFragmentFragmentDoc,
     "\n  fragment UserPopupFragment on User {\n    user_uuid\n    handle\n    screen_name\n    bio\n  }\n": types.UserPopupFragmentFragmentDoc,
+    "\n  mutation CreatePostMutation {\n    createPost {\n      post_uuid\n      title\n      body\n    }\n  }\n": types.CreatePostMutationDocument,
     "\n  query GetPostDetailQuery($uuid: UUID!) {\n    getPostByUUID(uuid: $uuid) {\n      ...PostDetailFragment\n    }\n  }\n": types.GetPostDetailQueryDocument,
     "\n  query GetAllPostsQuery {\n    getAllPosts(limit: 10) {\n      post_uuid\n      ...PostFragment\n    }\n  }\n": types.GetAllPostsQueryDocument,
     "\n  fragment PostPopupFragment on Post {\n    post_uuid\n    title\n    body\n  }\n": types.PostPopupFragmentFragmentDoc,
@@ -56,6 +57,10 @@ export function graphql(source: "\n  fragment PostDetailFragment on Post {\n    
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
 export function graphql(source: "\n  fragment UserPopupFragment on User {\n    user_uuid\n    handle\n    screen_name\n    bio\n  }\n"): (typeof documents)["\n  fragment UserPopupFragment on User {\n    user_uuid\n    handle\n    screen_name\n    bio\n  }\n"];
+/**
+ * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
+ */
+export function graphql(source: "\n  mutation CreatePostMutation {\n    createPost {\n      post_uuid\n      title\n      body\n    }\n  }\n"): (typeof documents)["\n  mutation CreatePostMutation {\n    createPost {\n      post_uuid\n      title\n      body\n    }\n  }\n"];
 /**
  * The graphql function is used to parse GraphQL queries into a document that can be used by GraphQL clients.
  */
