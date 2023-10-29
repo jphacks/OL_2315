@@ -12,6 +12,7 @@ const PostFragment = graphql(`
     title
     body
     user {
+      image_url
       ...UserPopupFragment
     }
   }

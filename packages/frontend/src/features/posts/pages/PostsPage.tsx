@@ -7,6 +7,7 @@ import { Spinner } from "@nextui-org/react";
 const GetAllPostsQuery = graphql(`
   query GetAllPostsQuery {
     getAllPosts(limit: 10) {
+      post_uuid
       ...PostFragment
     }
   }
@@ -32,13 +33,12 @@ const PostsPage = () => {
   return (
     <div className="flex flex-col items-center justify-between">
       <div className="flex flex-col w-8/12 space-y-4">
-        {data?.getAllPosts.map((post, i) => (
-          <PostCard key={i} post={post} />
+        {data?.getAllPosts.map((post) => (
+          <PostCard key={post.post_uuid} post={post} />
         ))}
       </div>
     </div>
   );
-  // graphqlのフラグメントマスキングでやむを得ずmapのkeyでiを使っているので、少し心配
 };
 
 export { PostsPage };
