@@ -20,7 +20,6 @@ interface ISNSServiceService extends grpc.ServiceDefinition<grpc.UntypedServiceI
     deleteComment: ISNSServiceService_IDeleteComment;
     createLike: ISNSServiceService_ICreateLike;
     getLikeById: ISNSServiceService_IGetLikeById;
-    updateLike: ISNSServiceService_IUpdateLike;
     deleteLike: ISNSServiceService_IDeleteLike;
 }
 
@@ -114,15 +113,6 @@ interface ISNSServiceService_IGetLikeById extends grpc.MethodDefinition<sns_pb.I
     responseSerialize: grpc.serialize<sns_pb.Like>;
     responseDeserialize: grpc.deserialize<sns_pb.Like>;
 }
-interface ISNSServiceService_IUpdateLike extends grpc.MethodDefinition<sns_pb.Like, sns_pb.Like> {
-    path: "/sns.SNSService/UpdateLike";
-    requestStream: false;
-    responseStream: false;
-    requestSerialize: grpc.serialize<sns_pb.Like>;
-    requestDeserialize: grpc.deserialize<sns_pb.Like>;
-    responseSerialize: grpc.serialize<sns_pb.Like>;
-    responseDeserialize: grpc.deserialize<sns_pb.Like>;
-}
 interface ISNSServiceService_IDeleteLike extends grpc.MethodDefinition<sns_pb.ID, google_protobuf_empty_pb.Empty> {
     path: "/sns.SNSService/DeleteLike";
     requestStream: false;
@@ -146,7 +136,6 @@ export interface ISNSServiceServer {
     deleteComment: grpc.handleUnaryCall<sns_pb.ID, google_protobuf_empty_pb.Empty>;
     createLike: grpc.handleUnaryCall<sns_pb.Like, sns_pb.Like>;
     getLikeById: grpc.handleUnaryCall<sns_pb.ID, sns_pb.Like>;
-    updateLike: grpc.handleUnaryCall<sns_pb.Like, sns_pb.Like>;
     deleteLike: grpc.handleUnaryCall<sns_pb.ID, google_protobuf_empty_pb.Empty>;
 }
 
@@ -181,9 +170,6 @@ export interface ISNSServiceClient {
     getLikeById(request: sns_pb.ID, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
     getLikeById(request: sns_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
     getLikeById(request: sns_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
-    updateLike(request: sns_pb.Like, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
-    updateLike(request: sns_pb.Like, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
-    updateLike(request: sns_pb.Like, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
     deleteLike(request: sns_pb.ID, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteLike(request: sns_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     deleteLike(request: sns_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
@@ -221,9 +207,6 @@ export class SNSServiceClient extends grpc.Client implements ISNSServiceClient {
     public getLikeById(request: sns_pb.ID, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
     public getLikeById(request: sns_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
     public getLikeById(request: sns_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
-    public updateLike(request: sns_pb.Like, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
-    public updateLike(request: sns_pb.Like, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
-    public updateLike(request: sns_pb.Like, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: sns_pb.Like) => void): grpc.ClientUnaryCall;
     public deleteLike(request: sns_pb.ID, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteLike(request: sns_pb.ID, metadata: grpc.Metadata, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;
     public deleteLike(request: sns_pb.ID, metadata: grpc.Metadata, options: Partial<grpc.CallOptions>, callback: (error: grpc.ServiceError | null, response: google_protobuf_empty_pb.Empty) => void): grpc.ClientUnaryCall;

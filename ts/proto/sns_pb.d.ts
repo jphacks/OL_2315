@@ -59,6 +59,16 @@ export class Comment extends jspb.Message {
     getPostId(): string;
     setPostId(value: string): Comment;
 
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Comment;
+
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): void;
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Comment;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Comment.AsObject;
     static toObject(includeInstance: boolean, msg: Comment): Comment.AsObject;
@@ -75,6 +85,8 @@ export namespace Comment {
         content: string,
         userId: string,
         postId: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
 
@@ -87,6 +99,11 @@ export class Like extends jspb.Message {
     setUserId(value: string): Like;
     getPostId(): string;
     setPostId(value: string): Like;
+
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Like;
 
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Like.AsObject;
@@ -104,6 +121,7 @@ export namespace Like {
         postCommentId: string,
         userId: string,
         postId: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
 

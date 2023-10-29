@@ -23,6 +23,11 @@ export class Fund extends jspb.Message {
     getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
     setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Fund;
 
+    hasUpdatedAt(): boolean;
+    clearUpdatedAt(): void;
+    getUpdatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setUpdatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Fund;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Fund.AsObject;
     static toObject(includeInstance: boolean, msg: Fund): Fund.AsObject;
@@ -40,6 +45,7 @@ export namespace Fund {
         postId: string,
         amount: number,
         createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
+        updatedAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
 

@@ -43,12 +43,13 @@ func (s *snsService) GetPostById(ctx context.Context, request *grpc_sns.ID) (*gr
 }
 
 func (s *snsService) CreatePost(ctx context.Context, request *grpc_sns.Post) (*grpc_sns.Post, error) {
+	now:=time.Now()
 	post := &model.Post{
 		PostUUID:  uuid.New().String(),
 		UserID:    request.UserId,
 		Body:      request.Body,
-		CreatedAt: request.CreatedAt.AsTime(),
-		UpdatedAt: request.UpdatedAt.AsTime(),
+		CreatedAt: now,
+		UpdatedAt: now,
 		IsPublic:  request.IsPublic,
 	}
 	err := s.db.CreatePost(post)
@@ -56,7 +57,7 @@ func (s *snsService) CreatePost(ctx context.Context, request *grpc_sns.Post) (*g
 		return nil, err
 	}
 
-	createAt := timestamppb.New(time.Now())
+	createAt := timestamppb.New(now)
 	updateAt := createAt
 
 	return &grpc_sns.Post{

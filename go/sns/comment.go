@@ -31,20 +31,21 @@ func (s *snsService) GetCommentById(ctx context.Context, request *grpc_sns.ID) (
 }
 
 func (s *snsService) CreateComment(ctx context.Context, request *grpc_sns.Comment) (*grpc_sns.Comment, error) {
+	now := time.Now()
 	comment := &model.Comment{
 		UUID:      uuid.New().String(),
 		PostID:    request.PostId,
 		UserID:    request.UserId,
 		Content:   request.Content,
-		CreatedAt: request.CreatedAt.AsTime(),
-		UpdatedAt: request.UpdatedAt.AsTime(),
+		CreatedAt: now,
+		UpdatedAt: now,
 	}
 	err := s.db.CreateComment(comment)
 	if err != nil {
 		return nil, err
 	}
 
-	createAt := timestamppb.New(time.Now())
+	createAt := timestamppb.New(now)
 	updateAt := createAt
 
 	return &grpc_sns.Comment{

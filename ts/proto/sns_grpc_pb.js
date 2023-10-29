@@ -173,17 +173,6 @@ var SNSServiceService = exports.SNSServiceService = {
     responseSerialize: serialize_sns_Like,
     responseDeserialize: deserialize_sns_Like,
   },
-  updateLike: {
-    path: '/sns.SNSService/UpdateLike',
-    requestStream: false,
-    responseStream: false,
-    requestType: sns_pb.Like,
-    responseType: sns_pb.Like,
-    requestSerialize: serialize_sns_Like,
-    requestDeserialize: deserialize_sns_Like,
-    responseSerialize: serialize_sns_Like,
-    responseDeserialize: deserialize_sns_Like,
-  },
   deleteLike: {
     path: '/sns.SNSService/DeleteLike',
     requestStream: false,

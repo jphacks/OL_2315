@@ -63,6 +63,11 @@ export class Follow extends jspb.Message {
     getFolloweeId(): string;
     setFolloweeId(value: string): Follow;
 
+    hasCreatedAt(): boolean;
+    clearCreatedAt(): void;
+    getCreatedAt(): google_protobuf_timestamp_pb.Timestamp | undefined;
+    setCreatedAt(value?: google_protobuf_timestamp_pb.Timestamp): Follow;
+
     serializeBinary(): Uint8Array;
     toObject(includeInstance?: boolean): Follow.AsObject;
     static toObject(includeInstance: boolean, msg: Follow): Follow.AsObject;
@@ -78,6 +83,7 @@ export namespace Follow {
         uuid: string,
         followerId: string,
         followeeId: string,
+        createdAt?: google_protobuf_timestamp_pb.Timestamp.AsObject,
     }
 }
 
