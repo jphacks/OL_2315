@@ -7,6 +7,7 @@ import (
 
 	"github.com/google/uuid"
 	"google.golang.org/protobuf/types/known/emptypb"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 func (s *snsService) CreateLike(ctx context.Context, request *grpc_sns.Like) (*grpc_sns.Like, error) {
@@ -15,6 +16,7 @@ func (s *snsService) CreateLike(ctx context.Context, request *grpc_sns.Like) (*g
 		PostCommentID: request.PostCommentId,
 		UserID:        request.UserId,
 		PostID:        request.PostId,
+		CreatedAt:    request.CreatedAt.AsTime(),
 	}
 	err := s.db.CreateLike(like)
 	if err != nil {
@@ -35,11 +37,14 @@ func (s *snsService) GetLikeById(ctx context.Context, request *grpc_sns.ID) (*gr
 		return nil, err
 	}
 
+	createAt := timestamppb.New(like.CreatedAt)
+
 	return &grpc_sns.Like{
 		Uuid:          like.UUID,
 		PostCommentId: like.PostCommentID,
 		UserId:        like.UserID,
 		PostId:        like.PostID,
+		CreatedAt:     createAt,
 	}, nil
 }
 

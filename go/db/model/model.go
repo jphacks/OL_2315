@@ -25,10 +25,12 @@ type Post struct {
 }
 
 type Comment struct {
-	UUID    string `gorm:"primary_key"`
-	Content string
-	UserID  string
-	PostID  string
+	UUID      string `gorm:"primary_key"`
+	Content   string
+	UserID    string
+	PostID    string
+	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP"`
+	UpdatedAt time.Time
 }
 
 type Like struct {
@@ -36,12 +38,14 @@ type Like struct {
 	PostCommentID string
 	UserID        string
 	PostID        string
+	CreatedAt     time.Time `gorm:"default:CURRENT_TIMESTAMP"`
 }
 
 type Follow struct {
 	UUID       string `gorm:"primary_key"`
 	FollowerID string
 	FolloweeID string
+	CreatedAt  time.Time `gorm:"default:CURRENT_TIMESTAMP"`
 }
 
 type Fund struct {
@@ -50,6 +54,7 @@ type Fund struct {
 	PostID    string
 	Amount    float32
 	CreatedAt time.Time `gorm:"default:CURRENT_TIMESTAMP"`
+	UpdatedAt time.Time
 }
 
 type Role string
