@@ -86,7 +86,7 @@ func (s *userService) CreateUser(ctx context.Context, request *grpc_user.User) (
 
 func (s *userService) UpdateUser(ctx context.Context, request *grpc_user.User) (*grpc_user.User, error) {
 	now := time.Now()
-	user := model.User{
+	user := &model.User{
 		UserUUID:   request.UserUuid,
 		AuthSub:    request.AuthSub,
 		Handle:     request.Handle,
@@ -97,7 +97,7 @@ func (s *userService) UpdateUser(ctx context.Context, request *grpc_user.User) (
 		Role:       model.Role(request.Role),
 	}
 
-	err := s.db.UpdateUser(&user)
+	err := s.db.UpdateUser(user.UserUUID, user)
 	if err != nil {
 		return nil, err
 	}

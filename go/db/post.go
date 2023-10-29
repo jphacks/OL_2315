@@ -26,8 +26,8 @@ func (d *DB) GetPostsByUserId(id string) ([]*model.Post, error) {
 	return posts, nil
 }
 
-func (d *DB) UpdatePost(post *model.Post) error {
-	if err := d.Conn.Save(post).Error; err != nil {
+func (d *DB) UpdatePost(id string, post *model.Post) error {
+	if err := d.Conn.Where("uuid = ?", id).Updates(post).Error; err != nil {
 		return err
 	}
 	return nil

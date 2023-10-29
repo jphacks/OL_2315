@@ -78,7 +78,8 @@ func (s *snsService) UpdatePost(ctx context.Context, request *grpc_sns.Post) (*g
 		UpdatedAt: request.UpdatedAt.AsTime(),
 		IsPublic:  request.IsPublic,
 	}
-	err := s.db.UpdatePost(post)
+
+	err := s.db.UpdatePost(post.PostUUID, post)
 	if err != nil {
 		return nil, err
 	}
