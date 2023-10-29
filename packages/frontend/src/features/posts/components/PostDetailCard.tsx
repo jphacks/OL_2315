@@ -1,5 +1,6 @@
-import { Card, CardBody, CardFooter, CardHeader, Button, Image, Spacer } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, CardHeader, Button, Image, Spacer, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem } from "@nextui-org/react";
 import { DotsVertical, Heart, MessageChatbot } from "tabler-icons-react";
+import { useNavigate } from "@tanstack/react-router";
 import { graphql } from "src/lib/generated/gql";
 import { FragmentType, useFragment } from "src/lib/generated";
 import { UserCard } from "src/features/users/components/UserCard";
@@ -22,6 +23,18 @@ const PostDetailFragment = graphql(`
 const PostDetailCard = ({ post: post_frag }: { post: FragmentType<typeof PostDetailFragment> }) => {
   // フラグメントの型を指定して対応するデータを取得
   const post = useFragment(PostDetailFragment, post_frag);
+
+  // ナビゲーションのフックを実行
+  const navigate = useNavigate({
+    from: "/auth/posts/$post_uuid",
+  });
+
+  // 編集ボタンを押したときの処理
+  const handle_onclick_edit = () => {
+    navigate({
+      to: `/auth/posts/${post.post_uuid}/edit`,
+    });
+  };
 
   return (
     <div className="flex flex-col gap-2">
@@ -52,9 +65,20 @@ const PostDetailCard = ({ post: post_frag }: { post: FragmentType<typeof PostDet
               <MessageChatbot size={24} strokeWidth={1.5} />
               <p>10</p>
             </Button>
-            <Button variant="light" radius="full">
-              <DotsVertical size={24} strokeWidth={1.5} />
-            </Button>
+            <Dropdown>
+              <DropdownTrigger>
+                <Button variant="light" radius="full">
+                  <DotsVertical size={24} strokeWidth={1.5} />
+                </Button>
+              </DropdownTrigger>
+              <DropdownMenu>
+                <DropdownItem>
+                  <Button color="primary" variant="shadow" className="w-full hover:-translate-y-1" onClick={handle_onclick_edit}>
+                    編集する
+                  </Button>
+                </DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
           </CardBody>
         </Card>
       </div>

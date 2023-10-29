@@ -116,8 +116,8 @@ const EditPostPage = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-between">
-      <div className="grid grid-cols-6 flex-row gap-2">
+    <div className="flex flex-col items-center justify-center">
+      <div className="grid grid-cols-6 flex-row gap-2 w-3/4">
         <Card isBlurred className="w-full bg-secondary col-span-5" shadow="sm">
           <CardHeader>
             <div className="flex">
