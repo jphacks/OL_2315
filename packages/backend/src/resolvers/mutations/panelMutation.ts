@@ -165,7 +165,7 @@ const PanelMutationResolver: MutationResolvers<GraphQLContext> = {
       const result = await prisma.post.create({
         data: {
           title: "下書き",
-          body: "",
+          body: "ここに本文を書いてください",
           userUuid: currentUser_uuid,
         },
       });
