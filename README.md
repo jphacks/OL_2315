@@ -2,6 +2,7 @@
 
 ![image](https://github.com/jphacks/OL_2315/assets/108039575/11470cfb-9980-477e-8a75-88a93c95614f)
 
+<img width="1066" alt="image" src="https://github.com/jphacks/OL_2315/assets/108039575/416a6961-520c-453c-a488-cdc00e127096">
 
 ## 製品概要
 ### 背景(製品開発のきっかけ、課題等）
