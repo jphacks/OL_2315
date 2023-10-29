@@ -13,6 +13,7 @@ message Fund {
     string post_id = 3;
     float amount = 4;
     google.protobuf.Timestamp created_at = 5;
+    google.protobuf.Timestamp updated_at = 6;
 }
 
 message ID {

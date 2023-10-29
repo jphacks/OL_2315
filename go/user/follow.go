@@ -7,6 +7,7 @@ import (
 
 	"github.com/google/uuid"
 	emptypb "google.golang.org/protobuf/types/known/emptypb"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 func (s *userService) FollowUser(ctx context.Context, request *grpc_user.Follow) (*grpc_user.Follow, error) {
@@ -14,16 +15,20 @@ func (s *userService) FollowUser(ctx context.Context, request *grpc_user.Follow)
 		UUID:       uuid.New().String(),
 		FollowerID: request.FollowerId,
 		FolloweeID: request.FolloweeId,
+		CreatedAt:  request.CreatedAt.AsTime(),
 	}
 	err := s.db.FollowUser(follow)
 	if err != nil {
 		return nil, err
 	}
 
+	createdAt := timestamppb.New(follow.CreatedAt)
+
 	return &grpc_user.Follow{
 		Uuid:       follow.UUID,
 		FollowerId: follow.FollowerID,
 		FolloweeId: follow.FolloweeID,
+		CreatedAt:  createdAt,
 	}, nil
 }
 
@@ -33,10 +38,13 @@ func (s *userService) GetFollowById(ctx context.Context, request *grpc_user.ID) 
 		return nil, err
 	}
 
+	createAt := timestamppb.New(follow.CreatedAt)
+
 	return &grpc_user.Follow{
 		Uuid:       follow.UUID,
 		FollowerId: follow.FollowerID,
 		FolloweeId: follow.FolloweeID,
+		CreatedAt:  createAt,
 	}, nil
 }
 

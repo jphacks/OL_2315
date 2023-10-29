@@ -17,8 +17,8 @@ func (d *DB) CreateUser(user *model.User) error {
 	return nil
 }
 
-func (d *DB) UpdateUser(user *model.User) error {
-	if err := d.Conn.Save(user).Error; err != nil {
+func (d *DB) UpdateUser(id string, user *model.User) error {
+	if err := d.Conn.Where("user_uuid = ?", id).Updates(user).Error; err != nil {
 		return err
 	}
 	return nil

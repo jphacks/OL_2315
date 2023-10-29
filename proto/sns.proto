@@ -21,6 +21,8 @@ message Comment {
   string content = 2;
   string user_id = 3;
   string post_id = 4;
+  google.protobuf.Timestamp created_at = 5;
+  google.protobuf.Timestamp updated_at = 6;
 }
 
 message Like {
@@ -28,6 +30,7 @@ message Like {
   string post_comment_id = 2;
   string user_id = 3;
   string post_id = 4;
+  google.protobuf.Timestamp created_at = 5;
 }
 
 message ID {
@@ -47,6 +50,5 @@ service SNSService {
 
   rpc CreateLike(Like) returns (Like);
   rpc GetLikeById(ID) returns (Like);
-  rpc UpdateLike(Like) returns (Like);
   rpc DeleteLike(ID) returns (google.protobuf.Empty);
 }

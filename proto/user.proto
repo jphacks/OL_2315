@@ -23,6 +23,7 @@ message Follow {
   string uuid = 1;
   string follower_id = 2;
   string followee_id = 3;
+  google.protobuf.Timestamp created_at = 4;
 }
 
 enum Role {

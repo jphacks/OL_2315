@@ -30,7 +30,6 @@ const (
 	SNSService_DeleteComment_FullMethodName  = "/sns.SNSService/DeleteComment"
 	SNSService_CreateLike_FullMethodName     = "/sns.SNSService/CreateLike"
 	SNSService_GetLikeById_FullMethodName    = "/sns.SNSService/GetLikeById"
-	SNSService_UpdateLike_FullMethodName     = "/sns.SNSService/UpdateLike"
 	SNSService_DeleteLike_FullMethodName     = "/sns.SNSService/DeleteLike"
 )
 
@@ -48,7 +47,6 @@ type SNSServiceClient interface {
 	DeleteComment(ctx context.Context, in *ID, opts ...grpc.CallOption) (*emptypb.Empty, error)
 	CreateLike(ctx context.Context, in *Like, opts ...grpc.CallOption) (*Like, error)
 	GetLikeById(ctx context.Context, in *ID, opts ...grpc.CallOption) (*Like, error)
-	UpdateLike(ctx context.Context, in *Like, opts ...grpc.CallOption) (*Like, error)
 	DeleteLike(ctx context.Context, in *ID, opts ...grpc.CallOption) (*emptypb.Empty, error)
 }
 
@@ -150,15 +148,6 @@ func (c *sNSServiceClient) GetLikeById(ctx context.Context, in *ID, opts ...grpc
 	return out, nil
 }
 
-func (c *sNSServiceClient) UpdateLike(ctx context.Context, in *Like, opts ...grpc.CallOption) (*Like, error) {
-	out := new(Like)
-	err := c.cc.Invoke(ctx, SNSService_UpdateLike_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *sNSServiceClient) DeleteLike(ctx context.Context, in *ID, opts ...grpc.CallOption) (*emptypb.Empty, error) {
 	out := new(emptypb.Empty)
 	err := c.cc.Invoke(ctx, SNSService_DeleteLike_FullMethodName, in, out, opts...)
@@ -182,7 +171,6 @@ type SNSServiceServer interface {
 	DeleteComment(context.Context, *ID) (*emptypb.Empty, error)
 	CreateLike(context.Context, *Like) (*Like, error)
 	GetLikeById(context.Context, *ID) (*Like, error)
-	UpdateLike(context.Context, *Like) (*Like, error)
 	DeleteLike(context.Context, *ID) (*emptypb.Empty, error)
 	mustEmbedUnimplementedSNSServiceServer()
 }
@@ -220,9 +208,6 @@ func (UnimplementedSNSServiceServer) CreateLike(context.Context, *Like) (*Like, 
 }
 func (UnimplementedSNSServiceServer) GetLikeById(context.Context, *ID) (*Like, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetLikeById not implemented")
-}
-func (UnimplementedSNSServiceServer) UpdateLike(context.Context, *Like) (*Like, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateLike not implemented")
 }
 func (UnimplementedSNSServiceServer) DeleteLike(context.Context, *ID) (*emptypb.Empty, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method DeleteLike not implemented")
@@ -420,24 +405,6 @@ func _SNSService_GetLikeById_Handler(srv interface{}, ctx context.Context, dec f
 	return interceptor(ctx, in, info, handler)
 }
 
-func _SNSService_UpdateLike_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(Like)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(SNSServiceServer).UpdateLike(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: SNSService_UpdateLike_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(SNSServiceServer).UpdateLike(ctx, req.(*Like))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _SNSService_DeleteLike_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ID)
 	if err := dec(in); err != nil {
@@ -502,10 +469,6 @@ var SNSService_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "GetLikeById",
 			Handler:    _SNSService_GetLikeById_Handler,
-		},
-		{
-			MethodName: "UpdateLike",
-			Handler:    _SNSService_UpdateLike_Handler,
 		},
 		{
 			MethodName: "DeleteLike",
