@@ -63,7 +63,7 @@ const CreatePostPage = () => {
     <div>
       <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
-          <ModalHeader>Create Post</ModalHeader>
+          <ModalHeader>投稿作成</ModalHeader>
           <ModalBody>投稿を作成しますか？</ModalBody>
           <ModalFooter>
             <Button onClick={handle_onclick_cancel}>Cancel</Button>

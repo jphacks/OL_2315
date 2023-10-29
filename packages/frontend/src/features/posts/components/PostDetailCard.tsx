@@ -35,8 +35,8 @@ const PostDetailCard = ({ post: post_frag }: { post: FragmentType<typeof PostDet
           </CardHeader>
           <CardBody>
             <div className="flex">
-              <div className="flex whitespace-pre-line bg-background rounded-lg">
-                <p className="text-xl">{post.body}</p>
+              <div className="flex bg-background rounded-lg">
+                <p className="text-xl whitespace-pre-line">{post.body}</p>
               </div>
             </div>
           </CardBody>

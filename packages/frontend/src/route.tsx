@@ -9,6 +9,7 @@ import { PostsPage } from "./features/posts/pages/PostsPage";
 import { PostDetailPage } from "./features/posts/pages/PostDetailPage";
 import { CallBackPage } from "./callback";
 import { CreatePostPage } from "./features/posts/pages/CreatePostPage";
+import { EditPostPage } from "./features/posts/pages/EditPostPage";
 
 // 以下、ルーティングの設定
 const callStackRootRoute = new RootRoute({
@@ -106,6 +107,14 @@ const postDetailRoute = new Route({
   component: () => <PostDetailPage />,
 });
 
+// auth/posts/$post_uuid/editルートの設定
+const postEditRoute = new Route({
+  // 親ルートを指定
+  getParentRoute: () => authenticatedPostRoute,
+  path: "$post_uuid/edit",
+  component: () => <EditPostPage />,
+});
+
 // ルータの設定
 const router = new Router({
   // 根本ルート
@@ -132,6 +141,8 @@ const router = new Router({
         postCreateRoute,
         // /auth/posts/$post_uuid
         postDetailRoute,
+        // /auth/posts/$post_uuid/edit
+        postEditRoute,
       ]),
     ]),
   ]),

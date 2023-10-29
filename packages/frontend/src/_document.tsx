@@ -48,6 +48,9 @@ export const Document = () => {
             <NavbarItem isActive>
               <Link to="/auth/posts">投稿一覧</Link>
             </NavbarItem>
+            <NavbarItem isActive>
+              <Link to="/auth/posts/create">投稿作成</Link>
+            </NavbarItem>
           </NavbarContent>
           <NavbarContent justify="end">
             <>
