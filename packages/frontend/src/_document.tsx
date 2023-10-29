@@ -13,6 +13,7 @@ import {
   DropdownMenu,
   DropdownItem,
   DropdownTrigger,
+  Image,
 } from "@nextui-org/react";
 import { Login, Menu2, Sun } from "tabler-icons-react";
 import { useAuthn } from "./lib/provider/authn/useAuthn";
@@ -35,7 +36,9 @@ export const Document = () => {
         <Navbar className="bg-gradient-to-r from-red-600/20 via-blue-300 bg-purple-500/80 transition-colors backdrop-blur-sm shadow-md rounded-b-sm hover:via-blue-200">
           <NavbarBrand>
             <Tooltip content="callstack" color="secondary">
-              <Link to="/">callstack</Link>
+              <Link to="/">
+                <Image src="/digicrie_title.png" radius="none" className="w-unit-4xl" />
+              </Link>
             </Tooltip>
           </NavbarBrand>
           <NavbarContent className="flex gap-4" justify="start">
