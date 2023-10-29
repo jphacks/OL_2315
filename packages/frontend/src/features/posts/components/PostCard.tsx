@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Card, CardBody, CardFooter, Button, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, CardHeader, Image, Spacer } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Button, Dropdown, DropdownItem, DropdownTrigger, DropdownMenu, CardHeader, Image } from "@nextui-org/react";
 import { FragmentType, useFragment } from "src/lib/generated";
 import { UserCardForPost } from "./UserCardForPost";
 import { graphql } from "src/lib/generated/gql";
