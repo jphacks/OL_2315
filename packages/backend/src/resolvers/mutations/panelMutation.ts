@@ -167,6 +167,7 @@ const PanelMutationResolver: MutationResolvers<GraphQLContext> = {
           title: "下書き",
           body: "ここに本文を書いてください",
           userUuid: currentUser_uuid,
+          is_public: true,
         },
       });
       return result;
